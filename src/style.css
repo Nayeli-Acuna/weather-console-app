@@ -17,7 +17,7 @@ body {
 a,
 .hide {
   text-decoration: none;
-  color: rgba(111, 119, 143, 0.7);
+  color: #6f778fb3;
 }
 
 a:hover {
@@ -171,4 +171,18 @@ h3 {
 
 .forecast h5 {
   font-size: 1.2em;
+}
+
+/* Footer */
+.signature {
+  color: #3b4668;
+}
+
+.signature-link {
+  color: #545c73;
+  text-decoration: underline;
+}
+
+.signature-link:hover {
+  color: #6f778fb3;
 }

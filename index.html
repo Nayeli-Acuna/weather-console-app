@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Homework week 5</title>
+
+    <!-- Axios JS -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- Bootstrap stylesheet -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+
+    <!-- Local stylesheet -->
+    <link rel="stylesheet" href="src/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="weather-card">
+        <!-- Search bar -->
+        <form
+          action=""
+          class="search-bar d-flex justify-content-center"
+          id="search-city"
+          autocomplete="off"
+        >
+          <input
+            type="search"
+            placeholder="Enter city"
+            class="form-control"
+            id="input-city"
+          />
+          <input type="submit" value="Search" class="btn-search" />
+          <input
+            type="image"
+            src="images/current-position.svg"
+            id="current-location-weather"
+            class="btn-location"
+          />
+        </form>
+
+        <!-- City data -->
+        <div class="city-name-date">
+          <h3 id="main-city-name" class="city-name">City Name</h3>
+          <p id="date-hour">Date & hour</p>
+        </div>
+
+        <!-- Main icons -->
+        <div class="main-icons">
+          <div class="row">
+            <div class="col-3 align-self-end humidity">
+              <img src="images/humidity.svg" alt="Humidity" />
+              <br />
+              <p><span id="humidity"></span>%</p>
+            </div>
+            <div class="col-6 sunny">
+              <img
+                src="images/sunny.svg"
+                alt="Sunny"
+                class="main-weather-icon"
+              />
+            </div>
+            <div class="col-3 align-self-end wind-speed">
+              <img src="images/wind-speed.svg" alt="Wind Speed" />
+              <br />
+              <p><span id="wind-speed"></span>km/h</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Weather data -->
+        <div class="weather-data">
+          <h2 id="weather-description">Weather</h2>
+          <h1>
+            <span id="main-temperature">Main Temp</span>
+            <span class="temperature-degrees">
+              <a href="#" class="active" id="change-celcius"> ˚C</a>
+              <span class="hide">
+                | <a href="#" id="change-fahrenheit">˚F</a></span
+              >
+            </span>
+          </h1>
+          <div class="maxmin-temp">
+            MAX <span class="maxmin-units" id="max-temp">Temp</span>˚ | MIN
+            <span class="maxmin-units" id="min-temp">Temp</span>˚
+          </div>
+        </div>
+
+        <!-- Motivational phrase -->
+        <div class="motiv-phrase">
+          <em>Do not forget to wear some sunscreen!</em>
+        </div>
+
+        <!-- Forecast -->
+        <div class="forecast">
+          <div class="row g-2">
+            <div class="col">
+              <div class="forecast-details">
+                <img src="images/min-sun.svg" alt="Sunny" />
+                <br />
+                <h6>SAT</h6>
+                <h5><strong>28˚</strong></h5>
+              </div>
+            </div>
+            <div class="col">
+              <div class="forecast-details">
+                <img src="images/min-cloudy.svg" alt="Cloudy" />
+                <br />
+                <h6>SUN</h6>
+                <h5><strong>29˚</strong></h5>
+              </div>
+            </div>
+            <div class="col">
+              <div class="forecast-details">
+                <img src="images/min-sun.svg" alt="Sunny" />
+                <br />
+                <h6>MON</h6>
+                <h5><strong>31˚</strong></h5>
+              </div>
+            </div>
+            <div class="col">
+              <div class="forecast-details">
+                <img src="images/min-partly-cloud.svg" alt="Partly cloudy" />
+                <br />
+                <h6>TUE</h6>
+                <h5><strong>27˚</strong></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- My JS -->
+    <script src="src/index.js"></script>
+  </body>
+</html>

@@ -1,28 +1,32 @@
 /* General styles */
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
+:root {
+  --main-color: #3b4668;
+  --main-text-color: #3b4668;
+  --secondary-text-color: #67718e;
+  --text-white: #ffffff;
+  --interactive-element: #6f778fb3;
+  --btn-shadow: #a09c9c7d;
+  --btn-shadow-hover: #b3b0b01f;
+  --bkg-white-rgb: 255, 255, 255;
+}
+
 body {
   font-family: "Lato", sans-serif;
   text-align: center;
-  background: linear-gradient(
-    180deg,
-    #ffffff 0.14%,
-    #fffae3 38.8%,
-    #ffffff 81.28%,
-    #fed7c9 112.53%
-  );
   min-height: 100vh;
 }
 
 a,
 .hide {
   text-decoration: none;
-  color: #6f778fb3;
+  color: var(--interactive-element);
 }
 
 a:hover {
   text-decoration: none;
-  color: #3b4668;
+  color: var(--main-text-color);
 }
 
 h1 {
@@ -35,7 +39,7 @@ h3 {
 }
 
 .weather-card {
-  color: #3b4668;
+  color: var(--main-color);
   border-radius: 25px;
   margin: 10px auto;
   max-width: 500px;
@@ -64,9 +68,9 @@ h3 {
   line-height: 1.5;
   border: none;
   border-radius: 0.375rem;
-  background: #3b4668;
-  box-shadow: 0px 4px 10px rgba(160, 156, 156, 0.489);
-  color: #ffffff;
+  background: var(--main-color);
+  box-shadow: 0px 4px 10px var(--btn-shadow);
+  color: var(--text-white);
 }
 
 .btn-location {
@@ -74,21 +78,20 @@ h3 {
   margin: 0 4px;
   border: none;
   border-radius: 0.375rem;
-  background: #ffffff8a;
-  box-shadow: 0px 4px 10px rgba(160, 156, 156, 0.489);
-  color: #3b4668;
+  background: rgba(var(--bkg-white-rgb), 0.5);
+  box-shadow: 0px 4px 10px var(--btn-shadow);
 }
 
 .btn-search:hover {
-  background: #545c73;
-  box-shadow: 0px 4px 10px rgba(179, 176, 176, 0.122);
-  color: #ffffff;
+  background: var(--secondary-text-color);
+  box-shadow: 0px 4px 10px var(--btn-shadow-hover);
+  color: var(--text-white);
 }
 
 .btn-location:hover {
-  background: #ffffff70;
-  box-shadow: 0px 4px 10px rgba(179, 176, 176, 0.122);
-  color: #3b4668;
+  background: rgba(var(--bkg-white-rgb), 0.4);
+  box-shadow: 0px 4px 10px var(--btn-shadow-hover);
+  color: var(--main-color);
 }
 
 /* City Details */
@@ -113,25 +116,19 @@ h3 {
 /* Weather Data */
 .temperature-degrees {
   text-decoration: none;
-  color: #3b4668;
-  /* opacity: 60%; */
+  color: var(--main-text-color);
   font-weight: 700;
 }
 
 .active {
-  color: #3b4668;
+  color: var(--main-text-color);
   font-weight: 900;
   text-decoration: none;
   opacity: 100%;
   pointer-events: none;
 }
 
-.maxmin-temp {
-  margin: 0%;
-  text-transform: uppercase;
-}
-
-.maxmin-units {
+.max-min-units {
   font-weight: 900;
 }
 
@@ -175,14 +172,14 @@ h3 {
 
 /* Footer */
 .signature {
-  color: #3b4668;
+  color: var(--main-text-color);
 }
 
 .signature-link {
-  color: #545c73;
+  color: var(--secondary-text-color);
   text-decoration: underline;
 }
 
 .signature-link:hover {
-  color: #6f778fb3;
+  color: var(--interactive-element);
 }

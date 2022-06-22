@@ -32,22 +32,115 @@ dateHour.innerHTML = formatDate(currentTime);
 
 // Weather info
 function showCityWeather(response) {
+  console.log(response.data);
   let mainCityName = document.querySelector("#main-city-name");
-  mainCityName.innerHTML = response.data.name;
   let mainCityTemp = document.querySelector("#main-temperature");
-  mainCityTemp.innerHTML = Math.round(response.data.main.temp);
   let mainCityMaxTemp = document.querySelector("#max-temp");
-  mainCityMaxTemp.innerHTML = Math.round(response.data.main.temp_max);
   let mainCityMinTemp = document.querySelector("#min-temp");
-  mainCityMinTemp.innerHTML = Math.round(response.data.main.temp_min);
-
   let mainCityHumidity = document.querySelector("#humidity");
-  mainCityHumidity.innerHTML = response.data.main.humidity;
   let mainCityWind = document.querySelector("#wind-speed");
-  mainCityWind.innerHTML = Math.round(response.data.wind.speed * 3.6);
-
   let weatherDescription = document.querySelector("#weather-description");
+  let mainIconAlt = document.querySelector("#main-weather-icon");
+
+  mainCityName.innerHTML = response.data.name;
+  mainCityTemp.innerHTML = Math.round(response.data.main.temp);
+  mainCityMaxTemp.innerHTML = Math.round(response.data.main.temp_max);
+  mainCityMinTemp.innerHTML = Math.round(response.data.main.temp_min);
+  mainCityHumidity.innerHTML = response.data.main.humidity;
+  mainCityWind.innerHTML = Math.round(response.data.wind.speed * 3.6);
   weatherDescription.innerHTML = response.data.weather[0].description;
+  mainIconAlt.setAttribute("alt", response.data.weather[0].description);
+
+  let mainWeatherIcon = response.data.weather[0].icon;
+  if (mainWeatherIcon === "01d") {
+    document
+      .querySelector("#main-weather-icon")
+      .setAttribute("src", "images/clear-d.svg");
+    document.getElementById("weather-card").style.background =
+      "var(--card-bkg-clear-d)";
+    document.querySelector("#motiv-phrase").innerHTML =
+      "Do not forget to wear some sunscreen!";
+  }
+  if (mainWeatherIcon === "01n") {
+    document
+      .querySelector("#main-weather-icon")
+      .setAttribute("src", "images/clear-n.svg");
+    document.getElementById("weather-card").style.background =
+      "var(--card-bkg-clear-n)";
+    document.querySelector(
+      "#motiv-phrase"
+    ).innerHTML = `"A certain darkness is needed to see the stars!"`;
+  }
+  if (
+    mainWeatherIcon === "02d" ||
+    mainWeatherIcon === "02n" ||
+    mainWeatherIcon === "03d" ||
+    mainWeatherIcon === "03n"
+  ) {
+    document
+      .querySelector("#main-weather-icon")
+      .setAttribute("src", "images/few-clouds.svg");
+    document.getElementById("weather-card").style.background =
+      "var(--card-bkg-few-clouds)";
+    document.querySelector(
+      "#motiv-phrase"
+    ).innerHTML = `"How sweet to be a cloud. Floating in the blue!"`;
+  }
+  if (mainWeatherIcon === "04d" || mainWeatherIcon === "04n") {
+    document
+      .querySelector("#main-weather-icon")
+      .setAttribute("src", "images/broken-clouds.svg");
+    document.getElementById("weather-card").style.background =
+      "var(--card-bkg-broken-clouds)";
+    document.querySelector(
+      "#motiv-phrase"
+    ).innerHTML = `"The darkest clouds precede the loveliest rain!"`;
+  }
+  if (
+    mainWeatherIcon === "09d" ||
+    mainWeatherIcon === "09n" ||
+    mainWeatherIcon === "10d" ||
+    mainWeatherIcon === "10n"
+  ) {
+    document
+      .querySelector("#main-weather-icon")
+      .setAttribute("src", "images/rain.svg");
+    document.getElementById("weather-card").style.background =
+      "var(--card-bkg-rain)";
+    document.querySelector(
+      "#motiv-phrase"
+    ).innerHTML = `"You can stand under my umbrella, ella, ella, eh, eh, eh..."`;
+  }
+  if (mainWeatherIcon === "11d" || mainWeatherIcon === "11n") {
+    document
+      .querySelector("#main-weather-icon")
+      .setAttribute("src", "images/thunderstorm.svg");
+    document.getElementById("weather-card").style.background =
+      "var(--card-bkg-thunderstorm)";
+    document.querySelector(
+      "#motiv-phrase"
+    ).innerHTML = `"Thunder is good, thunder is impressive; but it is lightning that does the work"`;
+  }
+  if (mainWeatherIcon === "13d" || mainWeatherIcon === "13n") {
+    document
+      .querySelector("#main-weather-icon")
+      .setAttribute("src", "images/snow.svg");
+    document.getElementById("weather-card").style.background =
+      "var(--card-bkg-snow)";
+    document.querySelector(
+      "#motiv-phrase"
+    ).innerHTML = `"The cold never bothered me anyway"`;
+  }
+  if (mainWeatherIcon === "50d" || mainWeatherIcon === "50n") {
+    document
+      .querySelector("#main-weather-icon")
+      .setAttribute("src", "images/mist.svg");
+    document.getElementById("weather-card").style.background =
+      "var(--card-bkg-mist)";
+    document.querySelector(
+      "#motiv-phrase"
+    ).innerHTML = `"I tried to catch some fog but I mist"`;
+  }
 
   changeFahrenheit.classList.remove("active");
   changeCelcius.classList.add("active");

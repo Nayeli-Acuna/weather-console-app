@@ -10,6 +10,14 @@
   --btn-shadow: #a09c9c7d;
   --btn-shadow-hover: #b3b0b01f;
   --bkg-white-rgb: 255, 255, 255;
+  --card-bkg-clear-d: linear-gradient(180deg, #ffeda0 0%, #ffa585 100%);
+  --card-bkg-clear-n: linear-gradient(180deg, #ada0ff 0%, #94cbff 100%);
+  --card-bkg-few-clouds: linear-gradient(180deg, #ada0ff 0%, #ffdfa0 100%);
+  --card-bkg-broken-clouds: linear-gradient(180deg, #ada0ff 0%, #ffc9e3 100%);
+  --card-bkg-rain: linear-gradient(180deg, #7bd0ff 0%, #c1f8e4 100%);
+  --card-bkg-thunderstorm: linear-gradient(180deg, #7bd0ff 0%, #c2c9e1 75.52%);
+  --card-bkg-snow: linear-gradient(180deg, #c8f5ff 27.08%, #7bd0ff 100%);
+  --card-bkg-mist: linear-gradient(180deg, #ffc2c2 0%, #c1f8e4 100%);
 }
 
 body {
@@ -45,7 +53,7 @@ h3 {
   max-width: 500px;
   min-width: 200px;
   padding: 26px;
-  background: linear-gradient(180deg, #ffeda0 0%, #ffa585 100%);
+  /* background: var(--card-bkg-clear-d); */
 }
 
 /* Search Bar */
@@ -145,6 +153,7 @@ div h2::first-letter {
 .motiv-phrase {
   margin-top: 40px;
   margin-bottom: 40px;
+  font-style: italic;
 }
 
 /* Forecast */

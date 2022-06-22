@@ -47,7 +47,7 @@ function showCityWeather(response) {
   mainCityWind.innerHTML = Math.round(response.data.wind.speed * 3.6);
 
   let weatherDescription = document.querySelector("#weather-description");
-  weatherDescription.innerHTML = response.data.weather[0].main;
+  weatherDescription.innerHTML = response.data.weather[0].description;
 
   changeFahrenheit.classList.remove("active");
   changeCelcius.classList.add("active");

@@ -32,7 +32,6 @@ dateHour.innerHTML = formatDate(currentTime);
 
 // Weather info
 function showCityWeather(response) {
-  console.log(response.data);
   let mainCityName = document.querySelector("#main-city-name");
   let mainCityTemp = document.querySelector("#main-temperature");
   let mainCityMaxTemp = document.querySelector("#max-temp");
@@ -42,10 +41,14 @@ function showCityWeather(response) {
   let weatherDescription = document.querySelector("#weather-description");
   let mainIconAlt = document.querySelector("#main-weather-icon");
 
+  celciusTemperature = Math.round(response.data.main.temp);
+  maxCelciusTemperature = Math.round(response.data.main.temp_max);
+  minCelciusTemperature = Math.round(response.data.main.temp_min);
+
   mainCityName.innerHTML = response.data.name;
-  mainCityTemp.innerHTML = Math.round(response.data.main.temp);
-  mainCityMaxTemp.innerHTML = Math.round(response.data.main.temp_max);
-  mainCityMinTemp.innerHTML = Math.round(response.data.main.temp_min);
+  mainCityTemp.innerHTML = celciusTemperature;
+  mainCityMaxTemp.innerHTML = maxCelciusTemperature;
+  mainCityMinTemp.innerHTML = minCelciusTemperature;
   mainCityHumidity.innerHTML = response.data.main.humidity;
   mainCityWind.innerHTML = Math.round(response.data.wind.speed * 3.6);
   weatherDescription.innerHTML = response.data.weather[0].description;
@@ -166,8 +169,6 @@ function searchInputCity(event) {
 let form = document.querySelector("#search-city");
 form.addEventListener("submit", searchInputCity);
 
-searchDefaultCity("Guadalajara");
-
 // Geolocation
 function searchCurrentLocation(position) {
   let apiKey = "bc1ee19a8e4836fa1d21a31e1295ce51";
@@ -176,6 +177,7 @@ function searchCurrentLocation(position) {
   let units = "metric";
   let apiEndPoint = "https://api.openweathermap.org/data/2.5/weather";
   let apiUrlGeolocation = `${apiEndPoint}?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
+
   changeFahrenheit.classList.remove("active");
   changeCelcius.classList.add("active");
 
@@ -193,25 +195,17 @@ btnCurrentPosition.addEventListener("click", getCurrentLocation);
 // Degrees conversion
 function displayFahrenheit(event) {
   event.preventDefault();
+  let mainTemperature = document.querySelector("#main-temperature");
+  let fahrenheitTemperature = (celciusTemperature * 9) / 5 + 32;
+  mainTemperature.innerHTML = Math.round(fahrenheitTemperature);
 
-  let fahrenheitTemperature = document.querySelector("#main-temperature");
-  let temperature = fahrenheitTemperature.innerHTML;
-  temperature = Number(temperature);
-  fahrenheitTemperature.innerHTML = Math.round((temperature * 9) / 5 + 32);
+  let maxTemperature = document.querySelector("#max-temp");
+  let maxFahrenheitTemperature = (maxCelciusTemperature * 9) / 5 + 32;
+  maxTemperature.innerHTML = Math.round(maxFahrenheitTemperature);
 
-  let maxFahrenheitTemperature = document.querySelector("#max-temp");
-  let maxTemperature = maxFahrenheitTemperature.innerHTML;
-  maxTemperature = Number(maxTemperature);
-  maxFahrenheitTemperature.innerHTML = Math.round(
-    (maxTemperature * 9) / 5 + 32
-  );
-
-  let minFahrenheitTemperature = document.querySelector("#min-temp");
-  let minTemperature = minFahrenheitTemperature.innerHTML;
-  minTemperature = Number(minTemperature);
-  minFahrenheitTemperature.innerHTML = Math.round(
-    (minTemperature * 9) / 5 + 32
-  );
+  let minTemperature = document.querySelector("#min-temp");
+  let minFahrenheitTemperature = (minCelciusTemperature * 9) / 5 + 32;
+  minTemperature.innerHTML = Math.round(minFahrenheitTemperature);
 
   changeCelcius.classList.remove("active");
   changeFahrenheit.classList.add("active");
@@ -219,28 +213,27 @@ function displayFahrenheit(event) {
 
 function displayCelcius(event) {
   event.preventDefault();
+  let mainTemperature = document.querySelector("#main-temperature");
+  mainTemperature.innerHTML = celciusTemperature;
 
-  let CelciusTemperature = document.querySelector("#main-temperature");
-  let temperature = CelciusTemperature.innerHTML;
-  temperature = Number(temperature);
-  CelciusTemperature.innerHTML = Math.round(((temperature - 32) * 5) / 9);
+  let mainMaxTemperature = document.querySelector("#max-temp");
+  mainMaxTemperature.innerHTML = maxCelciusTemperature;
 
-  let maxCelciusTemperature = document.querySelector("#max-temp");
-  let maxTemperature = maxCelciusTemperature.innerHTML;
-  maxTemperature = Number(maxTemperature);
-  maxCelciusTemperature.innerHTML = Math.round(((maxTemperature - 32) * 5) / 9);
-
-  let minCelciusTemperature = document.querySelector("#min-temp");
-  let minTemperature = minCelciusTemperature.innerHTML;
-  minTemperature = Number(minTemperature);
-  minCelciusTemperature.innerHTML = Math.round(((minTemperature - 32) * 5) / 9);
+  let mainMinTemperature = document.querySelector("#min-temp");
+  mainMinTemperature.innerHTML = minCelciusTemperature;
 
   changeFahrenheit.classList.remove("active");
   changeCelcius.classList.add("active");
 }
+
+let celciusTemperature = null;
+let maxCelciusTemperature = null;
+let minCelciusTemperature = null;
 
 let changeFahrenheit = document.querySelector("#change-fahrenheit");
 changeFahrenheit.addEventListener("click", displayFahrenheit);
 
 let changeCelcius = document.querySelector("#change-celcius");
 changeCelcius.addEventListener("click", displayCelcius);
+
+searchDefaultCity("Guadalajara");

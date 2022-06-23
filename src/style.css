@@ -11,11 +11,11 @@
   --btn-shadow-hover: #b3b0b01f;
   --bkg-white-rgb: 255, 255, 255;
   --card-bkg-clear-d: linear-gradient(180deg, #ffeda0 0%, #ffa585 100%);
-  --card-bkg-clear-n: linear-gradient(180deg, #ada0ff 0%, #94cbff 100%);
-  --card-bkg-few-clouds: linear-gradient(180deg, #ada0ff 0%, #ffdfa0 100%);
-  --card-bkg-broken-clouds: linear-gradient(180deg, #ada0ff 0%, #ffc9e3 100%);
-  --card-bkg-rain: linear-gradient(180deg, #7bd0ff 0%, #c1f8e4 100%);
-  --card-bkg-thunderstorm: linear-gradient(180deg, #7bd0ff 0%, #c2c9e1 75.52%);
+  --card-bkg-clear-n: linear-gradient(180deg, #bdb2ff 0%, #94cbff 100%);
+  --card-bkg-few-clouds: linear-gradient(180deg, #c1f8e4 0%, #9fddff 68.75%);
+  --card-bkg-broken-clouds: linear-gradient(180deg, #94cbff 0%, #ffceda 100%);
+  --card-bkg-rain: linear-gradient(180deg, #ada0ff 0%, #c9cfde 100%);
+  --card-bkg-thunderstorm: linear-gradient(180deg, #ffeda0 0%, #c2c9e1 100%);
   --card-bkg-snow: linear-gradient(180deg, #c8f5ff 27.08%, #7bd0ff 100%);
   --card-bkg-mist: linear-gradient(180deg, #ffc2c2 0%, #c1f8e4 100%);
 }
@@ -170,7 +170,7 @@ div h2::first-letter {
 }
 
 .forecast img {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   padding: 5px;
 }
 

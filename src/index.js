@@ -23,7 +23,7 @@ function formatDate(timeStamp) {
   ];
   let day = days[date.getDay()];
 
-  return `Last updated at ${day} ${hours}:${minutes}`;
+  return `Last updated: ${day} ${hours}:${minutes}`;
 }
 
 // Weather info

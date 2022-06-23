@@ -1,8 +1,9 @@
 // import "./style.css";
 
 // Date & Time
-function formatDate(date) {
-  let hours = date.getHours(1);
+function formatDate(timeStamp) {
+  let date = new Date(timeStamp);
+  let hours = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
   }
@@ -22,16 +23,12 @@ function formatDate(date) {
   ];
   let day = days[date.getDay()];
 
-  return `${day} ${hours}:${minutes}`;
+  return `Last updated at ${day} ${hours}:${minutes}`;
 }
-
-let dateHour = document.querySelector("#date-hour");
-let currentTime = new Date();
-
-dateHour.innerHTML = formatDate(currentTime);
 
 // Weather info
 function showCityWeather(response) {
+  let dateHour = document.querySelector("#date-hour");
   let mainCityName = document.querySelector("#main-city-name");
   let mainCityTemp = document.querySelector("#main-temperature");
   let mainCityMaxTemp = document.querySelector("#max-temp");
@@ -45,6 +42,7 @@ function showCityWeather(response) {
   maxCelciusTemperature = Math.round(response.data.main.temp_max);
   minCelciusTemperature = Math.round(response.data.main.temp_min);
 
+  dateHour.innerHTML = formatDate(response.data.dt * 1000);
   mainCityName.innerHTML = response.data.name;
   mainCityTemp.innerHTML = celciusTemperature;
   mainCityMaxTemp.innerHTML = maxCelciusTemperature;

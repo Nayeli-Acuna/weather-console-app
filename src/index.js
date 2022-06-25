@@ -26,6 +26,32 @@ function formatDate(timeStamp) {
   return `Last updated: ${day} ${hours}:${minutes}`;
 }
 
+// Forecast
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row g-2">`;
+  let days = ["SAT", "SUN", "MON", "TUE"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+          <div class="col">
+            <div class="forecast-details">
+             <img src="images/min-clear-d.svg" alt="Clear" />
+             <h6 class="forecast-date">${day}</h6>
+              <h5>
+               <strong class="forecast-temp-max">29</strong>˚
+               <span class="forecast-temp-max">10</span>˚
+              </h5>
+            </div>
+          </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 // Weather info
 function showCityWeather(response) {
   let dateHour = document.querySelector("#date-hour");
@@ -235,3 +261,4 @@ let changeCelcius = document.querySelector("#change-celcius");
 changeCelcius.addEventListener("click", displayCelcius);
 
 searchDefaultCity("Guadalajara");
+displayForecast();

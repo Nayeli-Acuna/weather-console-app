@@ -10,6 +10,11 @@
   --btn-shadow: #a09c9c7d;
   --btn-shadow-hover: #b3b0b01f;
   --bkg-white-rgb: 255, 255, 255;
+  --bkg-forecast: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(240, 238, 238, 0) 100%
+  );
   --card-bkg-clear-d: linear-gradient(180deg, #ffeda0 0%, #ffa585 100%);
   --card-bkg-clear-n: linear-gradient(180deg, #bdb2ff 0%, #94cbff 100%);
   --card-bkg-few-clouds: linear-gradient(180deg, #c1f8e4 0%, #9fddff 68.75%);
@@ -52,13 +57,13 @@ h3 {
   margin: 10px auto;
   max-width: 500px;
   min-width: 200px;
-  padding: 26px;
+  padding: 24px;
   /* background: var(--card-bkg-clear-d); */
 }
 
 /* Search Bar */
 .search-bar {
-  margin-top: 0;
+  margin-top: 10px;
   margin-bottom: 40px;
 }
 
@@ -146,7 +151,6 @@ div h2::first-letter {
 
 .weather-data {
   margin: 20px 0;
-  /* text-transform: capitalize; */
 }
 
 /* Motivational Phrase */
@@ -158,15 +162,11 @@ div h2::first-letter {
 
 /* Forecast */
 .forecast-details {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.4) 0%,
-    rgba(240, 238, 238, 0) 100%
-  );
+  background: var(--bkg-forecast);
   background-blend-mode: soft-light;
   border-radius: 30px;
   padding-top: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 6px;
 }
 
 .forecast img {
@@ -178,10 +178,11 @@ div h2::first-letter {
   font-weight: 400;
   font-size: 0.8em;
   margin-bottom: 5px;
+  color: var(--secondary-text-color);
 }
 
 .forecast h5 {
-  font-size: 1.2em;
+  font-size: 1em;
 }
 
 /* Footer */

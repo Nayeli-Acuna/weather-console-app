@@ -127,8 +127,8 @@ function showCityWeather(response) {
   mainCityTemp.innerHTML = celciusTemperature;
   mainCityMaxTemp.innerHTML = maxCelciusTemperature;
   mainCityMinTemp.innerHTML = minCelciusTemperature;
-  mainCityHumidity.innerHTML = response.data.main.humidity;
-  mainCityWind.innerHTML = Math.round(response.data.wind.speed * 3.6);
+  mainCityHumidity.innerHTML = `${response.data.main.humidity}%`;
+  mainCityWind.innerHTML = `${Math.round(response.data.wind.speed * 3.6)}km/h`;
   weatherDescription.innerHTML = response.data.weather[0].description;
   mainIconAlt.setAttribute("alt", response.data.weather[0].description);
 

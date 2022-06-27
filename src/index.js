@@ -26,27 +26,72 @@ function formatDate(timeStamp) {
   return `Last updated: ${day} ${hours}:${minutes}`;
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+
+  return days[day];
+}
+
 // Forecast
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row g-2">`;
-  let days = ["SAT", "SUN", "MON", "TUE"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+  forecast.forEach(function (forecastDay, index) {
+    let forecastIcon = forecastDay.weather[0].icon;
+    if (forecastIcon === "01d") {
+      forecastIcon = `images/min-clear-d.svg`;
+    }
+    if (forecastIcon === "01n") {
+      forecastIcon = `images/min-clear-n.svg`;
+    }
+    if (
+      forecastIcon === "02d" ||
+      forecastIcon === "02n" ||
+      forecastIcon === "03d" ||
+      forecastIcon === "03n"
+    ) {
+      forecastIcon = `images/min-few-clouds.svg`;
+    }
+    if (forecastIcon === "04d" || forecastIcon === "04n") {
+      forecastIcon = `images/min-broken-clouds.svg`;
+    }
+    if (
+      forecastIcon === "09d" ||
+      forecastIcon === "09n" ||
+      forecastIcon === "10d" ||
+      forecastIcon === "10n"
+    ) {
+      forecastIcon = `images/min-rain.svg`;
+    }
+    if (forecastIcon === "11d" || forecastIcon === "11n") {
+      forecastIcon = `images/min-thunderstorm.svg`;
+    }
+    if (forecastIcon === "13d" || forecastIcon === "13n") {
+      forecastIcon = `images/min-snow.svg`;
+    }
+    if (forecastIcon === "50d" || forecastIcon === "50n") {
+      forecastIcon = `images/min-mist.svg`;
+    }
+
+    if (index < 4) {
+      forecastHTML =
+        forecastHTML +
+        `
           <div class="col">
             <div class="forecast-details">
-             <img src="images/min-clear-d.svg" alt="Clear" />
-             <h6 class="forecast-date">${day}</h6>
+             <img src=${forecastIcon} alt=${forecastDay.weather[0].main} />
+             <h6>${formatDay(forecastDay.dt)}</h6>
               <h5>
-               <strong class="forecast-temp-max">29</strong>˚
-               <span class="forecast-temp-max">10</span>˚
+               <strong>${Math.round(forecastDay.temp.max)}˚ </strong>
+               ${Math.round(forecastDay.temp.min)}˚
               </h5>
             </div>
           </div>`;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;

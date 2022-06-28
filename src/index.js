@@ -1,5 +1,3 @@
-// import "./style.css";
-
 // Date & Time
 function formatDate(timeStamp) {
   let date = new Date(timeStamp);
@@ -77,7 +75,7 @@ function displayForecast(response) {
       forecastIcon = `images/min-mist.svg`;
     }
 
-    if (index < 4) {
+    if (index < 5 && index > 0) {
       forecastHTML =
         forecastHTML +
         `

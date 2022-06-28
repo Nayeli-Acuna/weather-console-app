@@ -176,13 +176,13 @@ div h2::first-letter {
 
 .forecast h6 {
   font-weight: 400;
-  font-size: 0.8em;
+  font-size: 0.7em;
   margin-bottom: 5px;
   color: var(--secondary-text-color);
 }
 
 .forecast h5 {
-  font-size: 1em;
+  font-size: 0.9em;
 }
 
 /* Footer */
